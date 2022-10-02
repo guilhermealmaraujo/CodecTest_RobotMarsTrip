@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CodecTest_RobotMarsTrip
 {
-    internal class RobotController
+    public class RobotController
     {
         public Robot Robot { get; private set; }
         public Terrain TerrainSensor { get; private set; }
@@ -75,7 +75,7 @@ namespace CodecTest_RobotMarsTrip
 
         private void MoveForwardFacingEast()
         {
-            if (Robot.PosY < TerrainSensor.HorizontalLimit)
+            if (Robot.PosX < TerrainSensor.HorizontalLimit)
             {
                 Robot.MoveForward();
             }

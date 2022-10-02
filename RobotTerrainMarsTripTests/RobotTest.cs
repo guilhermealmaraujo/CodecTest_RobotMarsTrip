@@ -1,164 +1,109 @@
 ﻿using CodecTest_RobotMarsTrip;
 using CodecTest_RobotMarsTrip.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RobotTerrainMarsTripTests
 {
     public class RobotTest
     {
-        [Fact]
-        public void MoveForwardTestFacingNorth() 
+        [Theory]
+        [InlineData(FacingOption.North)]
+        [InlineData(FacingOption.South)]
+        [InlineData(FacingOption.West)]
+        [InlineData(FacingOption.East)]
+        public void MoveForwardTestFacingDiferentDirections(FacingOption facingOption) 
         {
             //Arrange
             int posX = 1;
             int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.North);
+            Robot robotUnderTest = new Robot(posX, posY, facingOption);
 
             //Act
             robotUnderTest.MoveForward();
 
             //Assert
-            Assert.Equal(posY + 1, robotUnderTest.PosY);
-            Assert.Equal(posX, robotUnderTest.PosX);
+            if (facingOption == FacingOption.North) 
+            {
+                Assert.Equal(posY + 1, robotUnderTest.PosY);
+                Assert.Equal(posX, robotUnderTest.PosX);
+            }
+            else if (facingOption == FacingOption.South) 
+            {
+                Assert.Equal(posY - 1, robotUnderTest.PosY);
+                Assert.Equal(posX, robotUnderTest.PosX);
+            }
+            else if (facingOption == FacingOption.West)
+            {
+                Assert.Equal(posY, robotUnderTest.PosY);
+                Assert.Equal(posX - 1, robotUnderTest.PosX);
+            }
+            else if (facingOption == FacingOption.East)
+            {
+                Assert.Equal(posY, robotUnderTest.PosY);
+                Assert.Equal(posX + 1, robotUnderTest.PosX);
+            }
         }
 
-        [Fact]
-        public void MoveForwardTestFacingSouth()
+        [Theory]
+        [InlineData(FacingOption.North)]
+        [InlineData(FacingOption.South)]
+        [InlineData(FacingOption.West)]
+        [InlineData(FacingOption.East)]
+        public void TurnLeftFacingDifferentDirections(FacingOption facingOption) 
         {
             int posX = 1;
             int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.South);
-
-            robotUnderTest.MoveForward();
-
-            Assert.Equal(posY - 1, robotUnderTest.PosY);
-            Assert.Equal(posX, robotUnderTest.PosX);
-        }
-
-        [Fact]
-        public void MoveForwardTestFacingWest()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.West);
-
-            robotUnderTest.MoveForward();
-
-            Assert.Equal(posY, robotUnderTest.PosY);
-            Assert.Equal(posX - 1, robotUnderTest.PosX);
-        }
-
-        [Fact]
-        public void MoveForwardTestFacingEast()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.East);
-
-            robotUnderTest.MoveForward();
-
-            Assert.Equal(posY, robotUnderTest.PosY);
-            Assert.Equal(posX + 1, robotUnderTest.PosX);
-        }
-
-        [Fact]
-        public void TurnLeftFacingNorth() 
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.North);
+            Robot robotUnderTest = new Robot(posX, posY, facingOption);
 
             robotUnderTest.TurnLeft();
 
-            Assert.Equal(FacingOption.West, robotUnderTest.facing);
+            if (facingOption == FacingOption.North)
+            {
+                Assert.Equal(FacingOption.West, robotUnderTest.facing);
+            }
+            else if (facingOption == FacingOption.South)
+            {
+                Assert.Equal(FacingOption.East, robotUnderTest.facing);
+            }
+            else if (facingOption == FacingOption.West)
+            {
+                Assert.Equal(FacingOption.South, robotUnderTest.facing);
+            }
+            else if (facingOption == FacingOption.East)
+            {
+                Assert.Equal(FacingOption.North, robotUnderTest.facing);
+            }
         }
 
-        [Fact]
-        public void TurnLeftFacingSouth()
+        [Theory]
+        [InlineData(FacingOption.North)]
+        [InlineData(FacingOption.South)]
+        [InlineData(FacingOption.West)]
+        [InlineData(FacingOption.East)]
+        public void TurnRightFacingDifferentDirections(FacingOption facingOption)
         {
             int posX = 1;
             int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.South);
-
-            robotUnderTest.TurnLeft();
-
-            Assert.Equal(FacingOption.East, robotUnderTest.facing);
-        }
-
-        [Fact]
-        public void TurnLeftFacingWest()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.West);
-
-            robotUnderTest.TurnLeft();
-
-            Assert.Equal(FacingOption.South, robotUnderTest.facing);
-        }
-
-        [Fact]
-        public void TurnLeftFacingEast()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.East);
-
-            robotUnderTest.TurnLeft();
-
-            Assert.Equal(FacingOption.North, robotUnderTest.facing);
-        }
-
-        [Fact]
-        public void TurnRightFacingNorth()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.North);
+            Robot robotUnderTest = new Robot(posX, posY, facingOption);
 
             robotUnderTest.TurnRight();
 
-            Assert.Equal(FacingOption.East, robotUnderTest.facing);
-        }
-
-        [Fact]
-        public void TurnRightFacingSouth()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.South);
-
-            robotUnderTest.TurnRight();
-
-            Assert.Equal(FacingOption.West, robotUnderTest.facing);
-        }
-
-        [Fact]
-        public void TurnRightFacingWest()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.West);
-
-            robotUnderTest.TurnRight();
-
-            Assert.Equal(FacingOption.North, robotUnderTest.facing);
-        }
-
-        [Fact]
-        public void TurnRightFacingEast()
-        {
-            int posX = 1;
-            int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, FacingOption.East);
-
-            robotUnderTest.TurnRight();
-
-            Assert.Equal(FacingOption.South, robotUnderTest.facing);
+            if (facingOption == FacingOption.North)
+            {
+                Assert.Equal(FacingOption.East, robotUnderTest.facing);
+            }
+            else if (facingOption == FacingOption.South)
+            {
+                Assert.Equal(FacingOption.West, robotUnderTest.facing);
+            }
+            else if (facingOption == FacingOption.West)
+            {
+                Assert.Equal(FacingOption.North, robotUnderTest.facing);
+            }
+            else if (facingOption == FacingOption.East)
+            {
+                Assert.Equal(FacingOption.South, robotUnderTest.facing);
+            }
+            
         }
     }
 }
