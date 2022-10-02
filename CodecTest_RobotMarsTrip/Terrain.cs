@@ -8,10 +8,10 @@ namespace CodecTest_RobotMarsTrip
 {
     public class Terrain
     {
-        public int HorizontalLimit { get; private set; }
-        public int VerticalLimit { get; private set; }
+        public long HorizontalLimit { get; private set; }
+        public long VerticalLimit { get; private set; }
 
-        public Terrain(int horinLimit, int vertLimit) 
+        public Terrain(long horinLimit, long vertLimit) 
         {
             HorizontalLimit = horinLimit;
             VerticalLimit = vertLimit;

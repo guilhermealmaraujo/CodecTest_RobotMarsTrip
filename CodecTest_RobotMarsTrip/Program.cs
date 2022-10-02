@@ -1,30 +1,33 @@
 ﻿using CodecTest_RobotMarsTrip;
 using CodecTest_RobotMarsTrip.Enums;
 
-RobotController robotController = new RobotController(1, 1, FacingOption.North, 5, 5);
+string? terrainCrudeInput = Console.ReadLine();
 
-robotController.RobotReport();
+string[] terrainSplit = terrainCrudeInput.Split("x");
 
-robotController.ExecuteComand(Command.Forward);
-robotController.RobotReport();
+long terrainHorLmt = Convert.ToInt64(terrainSplit[0]);
+long terrainVertLmt = Convert.ToInt64(terrainSplit[1]);
 
-robotController.ExecuteComand(Command.Forward);
-robotController.RobotReport();
+string? robotCommands = Console.ReadLine();
 
-robotController.ExecuteComand(Command.TurnRight);
-robotController.RobotReport();
+RobotController robotController = new RobotController(1, 1, FacingOption.North, terrainHorLmt, terrainVertLmt);
 
-robotController.ExecuteComand(Command.Forward);
-robotController.RobotReport();
+foreach (char command in robotCommands)
+{
+    switch (command) 
+    {
+        case 'L':
+            robotController.ExecuteComand(Command.TurnLeft);
+            break;
+        case 'R':
+            robotController.ExecuteComand(Command.TurnRight);
+            break;
+        case 'F':
+            robotController.ExecuteComand(Command.Forward);
+            break;
+        default:
+            break;
+    }
+}
 
-robotController.ExecuteComand(Command.TurnLeft);
-robotController.RobotReport();
-
-robotController.ExecuteComand(Command.Forward);
-robotController.RobotReport();
-
-robotController.ExecuteComand(Command.TurnLeft);
-robotController.RobotReport();
-
-robotController.ExecuteComand(Command.Forward);
 robotController.RobotReport();

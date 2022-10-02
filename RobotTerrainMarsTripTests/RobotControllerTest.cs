@@ -21,7 +21,7 @@ namespace RobotTerrainMarsTripTests
 
             Assert.Equal(robotPosY, robotControllerUnderTest.Robot.PosY);
             Assert.Equal(robotPosX, robotControllerUnderTest.Robot.PosX);
-            Assert.Equal(facingOption, robotControllerUnderTest.Robot.facing);
+            Assert.Equal(facingOption, robotControllerUnderTest.Robot.Facing);
         }
 
         [Theory]
@@ -42,7 +42,7 @@ namespace RobotTerrainMarsTripTests
 
             robotControllerUnderTest.ExecuteComand(commandLeftOrRight);
 
-            Assert.Equal(expectedFO, robotControllerUnderTest.Robot.facing);
+            Assert.Equal(expectedFO, robotControllerUnderTest.Robot.Facing);
             Assert.Equal(robotPosY, robotControllerUnderTest.Robot.PosY);
             Assert.Equal(robotPosX, robotControllerUnderTest.Robot.PosX);
         }

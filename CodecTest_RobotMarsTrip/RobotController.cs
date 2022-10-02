@@ -12,7 +12,7 @@ namespace CodecTest_RobotMarsTrip
         public Robot Robot { get; private set; }
         public Terrain TerrainSensor { get; private set; }
 
-        public RobotController(int initPosX, int initPosY, FacingOption initFacingOption, int terrHorLimit, int terrVertLimit) 
+        public RobotController(long initPosX, long initPosY, FacingOption initFacingOption, long terrHorLimit, long terrVertLimit) 
         {
             Robot = new Robot(initPosX, initPosY, initFacingOption);
             TerrainSensor = new Terrain(terrHorLimit, terrVertLimit);
@@ -30,23 +30,23 @@ namespace CodecTest_RobotMarsTrip
             }
             else if (command == Command.Forward) 
             {
-                if (Robot.facing == FacingOption.North) 
+                if (Robot.Facing == FacingOption.North) 
                     MoveForwardFacingNorth();
 
-                if(Robot.facing == FacingOption.South)
+                if(Robot.Facing == FacingOption.South)
                     MoveForwardFacingSouth();
 
-                if(Robot.facing == FacingOption.West)
+                if(Robot.Facing == FacingOption.West)
                     MoveForwardFacingWest();
 
-                if(Robot.facing == FacingOption.East)
+                if(Robot.Facing == FacingOption.East)
                     MoveForwardFacingEast();
             }
         }
 
         public void RobotReport() 
         {
-            Console.WriteLine("Robot report: " + Robot.PosX + ", " + Robot.PosY + ", " + Robot.facing);
+            Console.WriteLine(Robot.PosX + ", " + Robot.PosY + ", " + Robot.Facing);
         }
 
         private void MoveForwardFacingNorth() 

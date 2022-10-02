@@ -9,20 +9,20 @@ namespace CodecTest_RobotMarsTrip
 {
     public class Robot
     {
-        public int PosX { get; private set; }
-        public int PosY { get; private set; }
-        public FacingOption facing { get; private set; }
+        public long PosX { get; private set; }
+        public long PosY { get; private set; }
+        public FacingOption Facing { get; private set; }
 
-        public Robot(int x, int y, FacingOption fac) 
+        public Robot(long x, long y, FacingOption fac) 
         {
             PosX = x;
             PosY = y;
-            facing = fac;
+            Facing = fac;
         }
 
         public void MoveForward() 
         {
-            switch (facing) 
+            switch (Facing) 
             {
                 case FacingOption.North:
                     PosY++;
@@ -41,38 +41,38 @@ namespace CodecTest_RobotMarsTrip
 
         public void TurnLeft() 
         {
-            switch (facing)
+            switch (Facing)
             {
                 case FacingOption.North:
-                    facing = FacingOption.West;
+                    Facing = FacingOption.West;
                     break;
                 case FacingOption.South:
-                    facing = FacingOption.East;
+                    Facing = FacingOption.East;
                     break;
                 case FacingOption.East:
-                    facing = FacingOption.North;
+                    Facing = FacingOption.North;
                     break;
                 case FacingOption.West:
-                    facing = FacingOption.South;
+                    Facing = FacingOption.South;
                     break;
             }
         }
 
         public void TurnRight()
         {
-            switch (facing)
+            switch (Facing)
             {
                 case FacingOption.North:
-                    facing = FacingOption.East;
+                    Facing = FacingOption.East;
                     break;
                 case FacingOption.South:
-                    facing = FacingOption.West;
+                    Facing = FacingOption.West;
                     break;
                 case FacingOption.East:
-                    facing = FacingOption.South;
+                    Facing = FacingOption.South;
                     break;
                 case FacingOption.West:
-                    facing = FacingOption.North;
+                    Facing = FacingOption.North;
                     break;
             }
         }

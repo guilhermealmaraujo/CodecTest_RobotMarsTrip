@@ -58,19 +58,19 @@ namespace RobotTerrainMarsTripTests
 
             if (facingOption == FacingOption.North)
             {
-                Assert.Equal(FacingOption.West, robotUnderTest.facing);
+                Assert.Equal(FacingOption.West, robotUnderTest.Facing);
             }
             else if (facingOption == FacingOption.South)
             {
-                Assert.Equal(FacingOption.East, robotUnderTest.facing);
+                Assert.Equal(FacingOption.East, robotUnderTest.Facing);
             }
             else if (facingOption == FacingOption.West)
             {
-                Assert.Equal(FacingOption.South, robotUnderTest.facing);
+                Assert.Equal(FacingOption.South, robotUnderTest.Facing);
             }
             else if (facingOption == FacingOption.East)
             {
-                Assert.Equal(FacingOption.North, robotUnderTest.facing);
+                Assert.Equal(FacingOption.North, robotUnderTest.Facing);
             }
         }
 
@@ -89,19 +89,19 @@ namespace RobotTerrainMarsTripTests
 
             if (facingOption == FacingOption.North)
             {
-                Assert.Equal(FacingOption.East, robotUnderTest.facing);
+                Assert.Equal(FacingOption.East, robotUnderTest.Facing);
             }
             else if (facingOption == FacingOption.South)
             {
-                Assert.Equal(FacingOption.West, robotUnderTest.facing);
+                Assert.Equal(FacingOption.West, robotUnderTest.Facing);
             }
             else if (facingOption == FacingOption.West)
             {
-                Assert.Equal(FacingOption.North, robotUnderTest.facing);
+                Assert.Equal(FacingOption.North, robotUnderTest.Facing);
             }
             else if (facingOption == FacingOption.East)
             {
-                Assert.Equal(FacingOption.South, robotUnderTest.facing);
+                Assert.Equal(FacingOption.South, robotUnderTest.Facing);
             }
             
         }
