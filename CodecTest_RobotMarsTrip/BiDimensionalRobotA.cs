@@ -1,19 +1,15 @@
 ﻿using CodecTest_RobotMarsTrip.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CodecTest_RobotMarsTrip.Interfaces;
 
 namespace CodecTest_RobotMarsTrip
 {
-    public class Robot
+    public class BiDimensionalRobotA : IBiDimensionalMover
     {
-        public long PosX { get; private set; }
-        public long PosY { get; private set; }
-        public FacingOption Facing { get; private set; }
+        private long PosX;
+        private long PosY;
+        private FacingOption Facing;
 
-        public Robot(long x, long y, FacingOption fac) 
+        public BiDimensionalRobotA(long x, long y, FacingOption fac) 
         {
             PosX = x;
             PosY = y;
@@ -75,6 +71,21 @@ namespace CodecTest_RobotMarsTrip
                     Facing = FacingOption.North;
                     break;
             }
+        }
+
+        public long GetPosX() 
+        {
+            return PosX;
+        }
+
+        public long GetPosY()
+        {
+            return PosY;
+        }
+
+        public FacingOption GetFacingOption()
+        {
+            return Facing;
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using CodecTest_RobotMarsTrip.Enums;
+using CodecTest_RobotMarsTrip.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace CodecTest_RobotMarsTrip
 {
-    public class RobotController
+    public class BiDimensionalRobotController: IMoverController
     {
-        public Robot Robot { get; private set; }
-        public Terrain TerrainSensor { get; private set; }
+        public IBiDimensionalMover Robot { get; private set; }
+        public TerrainSensor TerrainSensor { get; private set; }
 
-        public RobotController(long initPosX, long initPosY, FacingOption initFacingOption, long terrHorLimit, long terrVertLimit) 
+        public BiDimensionalRobotController(IBiDimensionalMover _robot, long terrHorLimit, long terrVertLimit) 
         {
-            Robot = new Robot(initPosX, initPosY, initFacingOption);
-            TerrainSensor = new Terrain(terrHorLimit, terrVertLimit);
+            Robot = _robot;
+            TerrainSensor = new TerrainSensor(terrHorLimit, terrVertLimit);
         }
 
         public void ExecuteComand(Command command) 
@@ -30,28 +31,28 @@ namespace CodecTest_RobotMarsTrip
             }
             else if (command == Command.Forward) 
             {
-                if (Robot.Facing == FacingOption.North) 
+                if (Robot.GetFacingOption() == FacingOption.North) 
                     MoveForwardFacingNorth();
 
-                if(Robot.Facing == FacingOption.South)
+                if(Robot.GetFacingOption() == FacingOption.South)
                     MoveForwardFacingSouth();
 
-                if(Robot.Facing == FacingOption.West)
+                if(Robot.GetFacingOption() == FacingOption.West)
                     MoveForwardFacingWest();
 
-                if(Robot.Facing == FacingOption.East)
+                if(Robot.GetFacingOption() == FacingOption.East)
                     MoveForwardFacingEast();
             }
         }
 
         public void RobotReport() 
         {
-            Console.WriteLine(Robot.PosX + ", " + Robot.PosY + ", " + Robot.Facing);
+            Console.WriteLine(Robot.GetPosX() + ", " + Robot.GetPosY() + ", " + Robot.GetFacingOption());
         }
 
         private void MoveForwardFacingNorth() 
         {
-            if (Robot.PosY < TerrainSensor.VerticalLimit) 
+            if (Robot.GetPosY() < TerrainSensor.VerticalLimit) 
             {
                 Robot.MoveForward();
             }
@@ -59,7 +60,7 @@ namespace CodecTest_RobotMarsTrip
 
         private void MoveForwardFacingSouth()
         {
-            if (Robot.PosY > 1)
+            if (Robot.GetPosY() > 1)
             {
                 Robot.MoveForward();
             }
@@ -67,7 +68,7 @@ namespace CodecTest_RobotMarsTrip
 
         private void MoveForwardFacingWest()
         {
-            if (Robot.PosX > 1)
+            if (Robot.GetPosX() > 1)
             {
                 Robot.MoveForward();
             }
@@ -75,7 +76,7 @@ namespace CodecTest_RobotMarsTrip
 
         private void MoveForwardFacingEast()
         {
-            if (Robot.PosX < TerrainSensor.HorizontalLimit)
+            if (Robot.GetPosX() < TerrainSensor.HorizontalLimit)
             {
                 Robot.MoveForward();
             }

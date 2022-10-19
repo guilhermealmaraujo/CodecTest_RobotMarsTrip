@@ -15,13 +15,15 @@ namespace RobotTerrainMarsTripTests
             int robotPosX = initialPosX;
             int robotPosY = initialPosY;
 
-            RobotController robotControllerUnderTest = new RobotController(robotPosX, robotPosY, facingOption, 5, 5);
+            BiDimensionalRobotA robot = new BiDimensionalRobotA(robotPosX, robotPosY, facingOption);
+
+            BiDimensionalRobotController robotControllerUnderTest = new BiDimensionalRobotController(robot, 5, 5);
 
             robotControllerUnderTest.ExecuteComand(Command.Forward);
 
-            Assert.Equal(robotPosY, robotControllerUnderTest.Robot.PosY);
-            Assert.Equal(robotPosX, robotControllerUnderTest.Robot.PosX);
-            Assert.Equal(facingOption, robotControllerUnderTest.Robot.Facing);
+            Assert.Equal(robotPosY, robotControllerUnderTest.Robot.GetPosY());
+            Assert.Equal(robotPosX, robotControllerUnderTest.Robot.GetPosX());
+            Assert.Equal(facingOption, robotControllerUnderTest.Robot.GetFacingOption());
         }
 
         [Theory]
@@ -38,13 +40,15 @@ namespace RobotTerrainMarsTripTests
             int robotPosX = 1;
             int robotPosY = 1;
 
-            RobotController robotControllerUnderTest = new RobotController(robotPosX, robotPosY, originalFO, 5, 5);
+            BiDimensionalRobotA robot = new BiDimensionalRobotA(robotPosX, robotPosY, originalFO);
+
+            BiDimensionalRobotController robotControllerUnderTest = new BiDimensionalRobotController(robot, 5, 5);
 
             robotControllerUnderTest.ExecuteComand(commandLeftOrRight);
 
-            Assert.Equal(expectedFO, robotControllerUnderTest.Robot.Facing);
-            Assert.Equal(robotPosY, robotControllerUnderTest.Robot.PosY);
-            Assert.Equal(robotPosX, robotControllerUnderTest.Robot.PosX);
+            Assert.Equal(expectedFO, robotControllerUnderTest.Robot.GetFacingOption());
+            Assert.Equal(robotPosY, robotControllerUnderTest.Robot.GetPosY());
+            Assert.Equal(robotPosX, robotControllerUnderTest.Robot.GetPosX());
         }
     }
 }

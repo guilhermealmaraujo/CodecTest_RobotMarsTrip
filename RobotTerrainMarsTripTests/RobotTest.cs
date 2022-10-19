@@ -15,7 +15,7 @@ namespace RobotTerrainMarsTripTests
             //Arrange
             int posX = 1;
             int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, facingOption);
+            BiDimensionalRobotA robotUnderTest = new BiDimensionalRobotA(posX, posY, facingOption);
 
             //Act
             robotUnderTest.MoveForward();
@@ -23,23 +23,23 @@ namespace RobotTerrainMarsTripTests
             //Assert
             if (facingOption == FacingOption.North) 
             {
-                Assert.Equal(posY + 1, robotUnderTest.PosY);
-                Assert.Equal(posX, robotUnderTest.PosX);
+                Assert.Equal(posY + 1, robotUnderTest.GetPosY());
+                Assert.Equal(posX, robotUnderTest.GetPosX());
             }
             else if (facingOption == FacingOption.South) 
             {
-                Assert.Equal(posY - 1, robotUnderTest.PosY);
-                Assert.Equal(posX, robotUnderTest.PosX);
+                Assert.Equal(posY - 1, robotUnderTest.GetPosY());
+                Assert.Equal(posX, robotUnderTest.GetPosX());
             }
             else if (facingOption == FacingOption.West)
             {
-                Assert.Equal(posY, robotUnderTest.PosY);
-                Assert.Equal(posX - 1, robotUnderTest.PosX);
+                Assert.Equal(posY, robotUnderTest.GetPosY());
+                Assert.Equal(posX - 1, robotUnderTest.GetPosX());
             }
             else if (facingOption == FacingOption.East)
             {
-                Assert.Equal(posY, robotUnderTest.PosY);
-                Assert.Equal(posX + 1, robotUnderTest.PosX);
+                Assert.Equal(posY, robotUnderTest.GetPosY());
+                Assert.Equal(posX + 1, robotUnderTest.GetPosX());
             }
         }
 
@@ -52,25 +52,25 @@ namespace RobotTerrainMarsTripTests
         {
             int posX = 1;
             int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, facingOption);
+            BiDimensionalRobotA robotUnderTest = new BiDimensionalRobotA(posX, posY, facingOption);
 
             robotUnderTest.TurnLeft();
 
             if (facingOption == FacingOption.North)
             {
-                Assert.Equal(FacingOption.West, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.West, robotUnderTest.GetFacingOption());
             }
             else if (facingOption == FacingOption.South)
             {
-                Assert.Equal(FacingOption.East, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.East, robotUnderTest.GetFacingOption());
             }
             else if (facingOption == FacingOption.West)
             {
-                Assert.Equal(FacingOption.South, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.South, robotUnderTest.GetFacingOption());
             }
             else if (facingOption == FacingOption.East)
             {
-                Assert.Equal(FacingOption.North, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.North, robotUnderTest.GetFacingOption());
             }
         }
 
@@ -83,25 +83,25 @@ namespace RobotTerrainMarsTripTests
         {
             int posX = 1;
             int posY = 1;
-            Robot robotUnderTest = new Robot(posX, posY, facingOption);
+            BiDimensionalRobotA robotUnderTest = new BiDimensionalRobotA(posX, posY, facingOption);
 
             robotUnderTest.TurnRight();
 
             if (facingOption == FacingOption.North)
             {
-                Assert.Equal(FacingOption.East, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.East, robotUnderTest.GetFacingOption());
             }
             else if (facingOption == FacingOption.South)
             {
-                Assert.Equal(FacingOption.West, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.West, robotUnderTest.GetFacingOption());
             }
             else if (facingOption == FacingOption.West)
             {
-                Assert.Equal(FacingOption.North, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.North, robotUnderTest.GetFacingOption());
             }
             else if (facingOption == FacingOption.East)
             {
-                Assert.Equal(FacingOption.South, robotUnderTest.Facing);
+                Assert.Equal(FacingOption.South, robotUnderTest.GetFacingOption());
             }
             
         }

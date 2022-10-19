@@ -10,7 +10,9 @@ long terrainVertLmt = Convert.ToInt64(terrainSplit[1]);
 
 string? robotCommands = Console.ReadLine();
 
-RobotController robotController = new RobotController(1, 1, FacingOption.North, terrainHorLmt, terrainVertLmt);
+BiDimensionalRobotA robot = new BiDimensionalRobotA(1, 1, FacingOption.North);
+
+BiDimensionalRobotController robotController = new BiDimensionalRobotController(robot, terrainHorLmt, terrainVertLmt);
 
 foreach (char command in robotCommands)
 {
